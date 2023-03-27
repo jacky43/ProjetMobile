@@ -1,3 +1,25 @@
 <resources>
     <string name="app_name">ProjetMobile.UI</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+    <string name="nav_account_title">Mon compte</string>
+    <string name="phone_vide">Numéro de téléphone est vide.</string>
+    <string name="phone_non_valide">Numéro de téléphone est non valide.</string>
+    <string name="firstName_empty">Add your firstname.</string>
+    <string name="firstName_not_valid">firstname is not valid.</string>
+    <string name="lastName_empty">Add your lastname.</string>
+    <string name="lastName_not_valid">lastname is not valid.</string>
+    <string name="ville_vide">La ville est vide.</string>
+    <string name="ville_non_valide">La ville est non valide.</string>
+    <string name="email_vide">Ajouter votre email.</string>
+    <string name="email_nom_valide">email est non valide.</string>
+    <string name="information_valide">Votre course a été ajouter avec success.</string>
+    <string name="information_non_valide">impossible d"ajouter la course.</string>
+    <string name="message_vide">entrez votre message.</string>
+    <string name="message_valide">Votre message a été envoyé.</string>
+    <string name="dateBorn_empty">DateBorn is empty.</string>
+    <string name="dateBorn_not_valid">DateBorn is not valid.</string>
+    <string name="password_empty">password is empty.</string>
+    <string name="password_not_valid">password is not valid.</string>
+    <string name="password_not_equal">password is not the same.</string>
 </resources>
