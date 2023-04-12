@@ -22,4 +22,8 @@
     <string name="password_empty">password is empty.</string>
     <string name="password_not_valid">password is not valid.</string>
     <string name="password_not_equal">password is not the same.</string>
+    <string name="adress_vide">Ajouter votre adress.</string>
+    <string name="adress_nom_valide">adress est non valide.</string>
+    <string name="phone">Ajouter votre numéro téléphone.</string>
+    <string name="phone_nom_valide">numéro de téléphone est non valide.</string>
 </resources>

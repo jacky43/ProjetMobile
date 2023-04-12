@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#302E2E"
-    tools:context=".ConnectionActivity">
+    tools:context=".MenuCourierActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -17,30 +17,21 @@
         android:layout_marginBottom="450dp"
         app:srcCompat="@drawable/resize" />
 
-    <EditText
-        android:id="@+id/btnCourierAccount"
-        android:layout_width="169dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="130dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginBottom="200dp"
-        android:hint="email" />
-
-    <EditText
-        android:id="@+id/edtPasswordConnection"
-        android:layout_width="171dp"
+    <Button
+        android:id="@+id/btnClientAccount"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="130dp"
         android:layout_marginTop="400dp"
         android:layout_marginBottom="100dp"
-        android:hint="password" />
+        android:text="choisir ue course" />
 
     <Button
-        android:id="@+id/btnConnection"
+        android:id="@+id/btnDisponibilite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="130dp"
         android:layout_marginTop="500dp"
-        android:text="connection" />
+        android:text="Entrer disponibilté" />
 
 </RelativeLayout>

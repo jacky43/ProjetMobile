@@ -19,14 +19,22 @@ public class MainActivity extends AppCompatActivity {
         liaison();
     }
     private void liaison() {
-        btnCreateAccount = findViewById(R.id.btnCreateAccount);
-        btnConnectClient = findViewById(R.id.btnConnectClient);
-        btnConnectCourier = findViewById(R.id.btnConnectCourier);
+        btnCreateAccount = findViewById(R.id.btnDisponibilite);
+        btnConnectClient = findViewById(R.id.btnClientAccount);
+        btnConnectCourier = findViewById(R.id.btnCourierAccount);
 
         btnCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, CreateAccountActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnConnectCourier.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, ConnectionActivity.class);
                 startActivity(intent);
             }
         });

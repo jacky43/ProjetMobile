@@ -18,7 +18,7 @@
         app:srcCompat="@drawable/resize" />
 
     <Button
-        android:id="@+id/btnConnectCourier"
+        android:id="@+id/btnCourierAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="130dp"
@@ -27,7 +27,7 @@
         android:text="UberDog account" />
 
     <Button
-        android:id="@+id/btnConnectClient"
+        android:id="@+id/btnClientAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="130dp"
@@ -36,7 +36,7 @@
         android:text="client account" />
 
     <Button
-        android:id="@+id/btnCreateAccount"
+        android:id="@+id/btnDisponibilite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="130dp"

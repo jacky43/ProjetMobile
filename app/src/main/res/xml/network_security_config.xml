@@ -3,10 +3,9 @@
 le paramètre de configuration cleartextTrafficPermitted=\"true\" ne doit être utilisé qu'à des fins de test,
 lors de la connexion aux API en production, vous devez connectez-vous toujours aux points de terminaison basés sur https au lieu de http
 -->
+
 <network-security-config>
-    <base-config cleartextTrafficPermitted="true" >
-    <trust-anchors>
-        <certificates src="system" />
-    </trust-anchors>
-    </base-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">10.0.2.2</domain>
+    </domain-config>
 </network-security-config>

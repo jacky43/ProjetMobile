@@ -15,11 +15,14 @@ public interface RetrofitApi {
     @Retry
     @GET("/api/User")
     Call<List<User>> getUsers();
-
+    @Retry
     @POST("/api/User")
     Call<Void> createUser(@Body User user);
 
-    @POST("/messages")
-    Call<Void> createMessage(@Body User receiveMessage);
+    @POST("/api/Courier")
+    Call<Void> createCourier(@Body Courier courier);
+    @Retry
+    @GET("/api/Courier")
+    Call<List<Courier>> getCouriers();
 
 }

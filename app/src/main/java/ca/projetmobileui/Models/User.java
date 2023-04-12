@@ -3,15 +3,15 @@ package ca.projetmobileui.Models;
 public class User {
     private String firstName;
     private String lastName;
-    private String email;
     private String dateBorn;
+    private String email;
     private String password;
 
-    public User(String firstName, String lastName, String email, String dateBorn, String password) {
+    public User(String firstName, String lastName, String dateBorn, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.email = email;
         this.dateBorn = dateBorn;
+        this.email = email;
         this.password = password;
     }
 

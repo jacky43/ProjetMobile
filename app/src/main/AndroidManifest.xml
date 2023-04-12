@@ -5,15 +5,28 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:networkSecurityConfig="@xml/network_security_config"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
+        android:enableOnBackInvokedCallback="true"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:supportsRtl="true"
         android:theme="@style/Theme.ProjetMobileUI"
-        tools:targetApi="31">
+        tools:targetApi="tiramisu">
+        <activity
+            android:name=".detailsInfoCourierActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListeDesDisponibiliteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AjouterDisponibilteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MenuCourierActivity"
+            android:exported="false" />
         <activity
             android:name=".ConnectionActivity"
             android:exported="false" />

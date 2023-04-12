@@ -9,8 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import java.util.List;
-
 import ca.projetmobileui.Models.RetrofitApi;
 import ca.projetmobileui.Models.User;
 import ca.projetmobileui.Models.Utils;
@@ -55,80 +53,83 @@ public class CreateAccountActivity extends AppCompatActivity {
                 String dateBorn = edtDateBorn.getText().toString();
                 String password = edtPassword.getText().toString();
                 String confirmPassword = edtPassword.getText().toString();
-//                boolean firstNameIsValid =
-//                        Utils.checkRegexFirstName(firstName);
-//                boolean lastNameIsValid =
-//                        Utils.checkRegexLastName(lastName);
-//                boolean emailIsValid =
-//                        Utils.checkRegexEmail(email);
-////                boolean dateIsValid =
-////                        Utils.checkRegexDate(dateBorn);
-//                boolean passwordIsValid =
-//                        Utils.checkRegexPassword(password);
+                boolean firstNameIsValid =
+                        Utils.checkRegexFirstName(firstName);
+                boolean lastNameIsValid =
+                        Utils.checkRegexLastName(lastName);
+                boolean emailIsValid =
+                        Utils.checkRegexEmail(email);
+               boolean dateIsValid =
+                       Utils.checkRegexDate(dateBorn);
+                boolean passwordIsValid =
+                        Utils.checkRegexPassword(password);
                 boolean isSaveInfo = true;
-//                if (firstName.isEmpty()) {
-//                    Toast.makeText(CreateAccountActivity.this,
-//                            R.string.firstName_empty, Toast.LENGTH_SHORT).show();
-//                    isSaveInfo = false;
-//                } else if (lastName.isEmpty()) {
-//                    Toast.makeText(CreateAccountActivity.this,
-//                            R.string.lastName_empty, Toast.LENGTH_SHORT).show();
-//                    isSaveInfo = false;
-//                } else if (email.isEmpty()) {
-//                    Toast.makeText(CreateAccountActivity.this,
-//                            R.string.ville_vide, Toast.LENGTH_SHORT).show();
-//                    isSaveInfo = false;
-//                } else if (dateBorn.isEmpty()) {
-//                    Toast.makeText(CreateAccountActivity.this,
-//                            R.string.dateBorn_empty, Toast.LENGTH_SHORT).show();
-//                    isSaveInfo = false;
-//                } else if (password.isEmpty()) {
-//                    Toast.makeText(CreateAccountActivity.this,
-//                            R.string.password_empty, Toast.LENGTH_SHORT).show();
-//                    isSaveInfo = false;
-//                } else if (!firstNameIsValid) {
-//                    Toast.makeText(CreateAccountActivity.this,
-//                            R.string.firstName_not_valid, Toast.LENGTH_SHORT).show();
-//                    isSaveInfo = false;
-//                } else if (!lastNameIsValid) {
-//                    Toast.makeText(CreateAccountActivity.this,
-//                            R.string.lastName_not_valid, Toast.LENGTH_SHORT).show();
-//                    isSaveInfo = false;
-//                } else if (!emailIsValid) {
-//                    Toast.makeText(CreateAccountActivity.this,
-//                            R.string.email_nom_valide, Toast.LENGTH_SHORT).show();
-//                    isSaveInfo = false;
-//                } /*else if (!dateIsValid) {
-//                    Toast.makeText(CreateAccountActivity.this,
-//                            R.string.dateBorn_not_valid, Toast.LENGTH_SHORT).show();
-//                    isSaveInfo = false;
-//                } */else if (!passwordIsValid) {
-//                    Toast.makeText(CreateAccountActivity.this,
-//                            R.string.password_not_valid, Toast.LENGTH_SHORT).show();
-//                    isSaveInfo = false;
-                if (!password.equals(confirmPassword)) {
+                if (firstName.isEmpty()) {
+                    Toast.makeText(CreateAccountActivity.this,
+                            R.string.firstName_empty, Toast.LENGTH_SHORT).show();
+                    isSaveInfo = false;
+                } else if (lastName.isEmpty()) {
+                    Toast.makeText(CreateAccountActivity.this,
+                            R.string.lastName_empty, Toast.LENGTH_SHORT).show();
+                    isSaveInfo = false;
+                } else if (email.isEmpty()) {
+                    Toast.makeText(CreateAccountActivity.this,
+                            R.string.ville_vide, Toast.LENGTH_SHORT).show();
+                    isSaveInfo = false;
+                } else if (dateBorn.isEmpty()) {
+                    Toast.makeText(CreateAccountActivity.this,
+                            R.string.dateBorn_empty, Toast.LENGTH_SHORT).show();
+                    isSaveInfo = false;
+                } else if (password.isEmpty()) {
+                    Toast.makeText(CreateAccountActivity.this,
+                            R.string.password_empty, Toast.LENGTH_SHORT).show();
+                    isSaveInfo = false;
+                } else if (!firstNameIsValid) {
+                    Toast.makeText(CreateAccountActivity.this,
+                            R.string.firstName_not_valid, Toast.LENGTH_SHORT).show();
+                    isSaveInfo = false;
+                } else if (!lastNameIsValid) {
+                    Toast.makeText(CreateAccountActivity.this,
+                            R.string.lastName_not_valid, Toast.LENGTH_SHORT).show();
+                    isSaveInfo = false;
+                } else if (!emailIsValid) {
+                    Toast.makeText(CreateAccountActivity.this,
+                            R.string.email_nom_valide, Toast.LENGTH_SHORT).show();
+                    isSaveInfo = false;
+                } else if (!dateIsValid) {
+                    Toast.makeText(CreateAccountActivity.this,
+                            R.string.dateBorn_not_valid, Toast.LENGTH_SHORT).show();
+                    isSaveInfo = false;
+                } else if (!passwordIsValid) {
+                    Toast.makeText(CreateAccountActivity.this,
+                            R.string.password_not_valid, Toast.LENGTH_SHORT).show();
+                    isSaveInfo = false;
+                }if (!password.equals(confirmPassword)) {
                    Toast.makeText(CreateAccountActivity.this,
                            R.string.password_not_equal, Toast.LENGTH_SHORT).show();
                    isSaveInfo = false;
                 }
                 if (isSaveInfo) {
-                    saveUser(firstName, lastName, email, dateBorn, password );
+                    saveUser(firstName, lastName, dateBorn,email, password);
                 }
             }
         });
     }
 
-    private void saveUser(String firstName, String lastName, String email, String dateBorn, String password ) {
-        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://10.0.2.2:7275/")
+
+    private void saveUser(String firstName, String lastName, String dateBorn, String email, String password ) {
+        Retrofit retrofit = new Retrofit.Builder().baseUrl("http://10.0.2.2:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RetrofitApi retrofitApi = retrofit.create(RetrofitApi.class);
-        //User user = new User(firstName, lastName, email, dateBorn, password);
-        Call<List<User>> call = retrofitApi.getUsers();
-        call.enqueue((new Callback<List<User>>() {
+        User user = new User(firstName, lastName, dateBorn, email, password);
+        System.out.println(user.getDateBorn() + "-" + user.getEmail());
+        Call<Void> call = retrofitApi.createUser(user);
+        call.enqueue((new Callback<Void>() {
             @Override
-            public void onResponse(Call<List<User>> call, Response<List<User>> response) {
+            public void onResponse(Call<Void> call, Response<Void> response) {
                 Toast.makeText(CreateAccountActivity.this, "User added to API", Toast.LENGTH_SHORT).show();
+                System.out.println(response.raw());
                 edtFirstName.setText("");
                 edtLastName.setText("");
                 edtEmail.setText("");
@@ -138,14 +139,14 @@ public class CreateAccountActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<User>> call, Throwable t) {
+            public void onFailure(Call<Void> call, Throwable t) {
                 Toast.makeText(CreateAccountActivity.this, "Data fail to API" + t, Toast.LENGTH_SHORT).show();
                 Log.w("Data failed",t);
                 Log.getStackTraceString(t);
                 System.out.println(t.getMessage());
             }
-
         }));
+
     }
 
 }
