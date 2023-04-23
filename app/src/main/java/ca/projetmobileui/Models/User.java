@@ -3,14 +3,14 @@ package ca.projetmobileui.Models;
 public class User {
     private String firstName;
     private String lastName;
-    private String dateBorn;
+    private String bornDate;
     private String email;
     private String password;
 
     public User(String firstName, String lastName, String dateBorn, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.dateBorn = dateBorn;
+        this.bornDate = dateBorn;
         this.email = email;
         this.password = password;
     }
@@ -40,11 +40,11 @@ public class User {
     }
 
     public String getDateBorn() {
-        return dateBorn;
+        return bornDate;
     }
 
     public void setDateBorn(String dateBorn) {
-        this.dateBorn = dateBorn;
+        this.bornDate = dateBorn;
     }
 
     public String getPassword() {

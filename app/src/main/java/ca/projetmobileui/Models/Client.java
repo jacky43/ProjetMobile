@@ -1,19 +1,21 @@
 package ca.projetmobileui.Models;
 
-public class Courier {
+public class Client {
 
     private String firstName;
     private String lastName;
     private String adress;
     private String phoneNumber;
     private String dateCourse;
+    private double price;
 
-    public Courier(String firstName, String lastName, String adress, String phoneNumber, String dateHeure) {
+    public Client(String firstName, String lastName, String adress, String phoneNumber, String dateCourse, double price) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.adress = adress;
         this.phoneNumber = phoneNumber;
-        this.dateCourse = dateHeure;
+        this.dateCourse = dateCourse;
+        this.price = price;
     }
 
     public String getFirstName() {
@@ -48,11 +50,19 @@ public class Courier {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getDateHeure() {
+    public String getDateCourse() {
         return dateCourse;
     }
 
-    public void setDateHeure(String dateHeure) {
-        this.dateCourse = dateHeure;
+    public void setDateCourse(String dateCourse) {
+        this.dateCourse = dateCourse;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 }

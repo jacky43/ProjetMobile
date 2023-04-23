@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import ca.projetmobileui.Models.Client;
 import ca.projetmobileui.Models.Courier;
 import ca.projetmobileui.Models.RetrofitApi;
 import ca.projetmobileui.Models.Utils;
@@ -17,38 +18,41 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class AjouterDisponibilteActivity extends AppCompatActivity {
+public class AjouterCourseActivity extends AppCompatActivity {
 
-    private EditText edtFirstNameCourier;
-    private EditText edtLastNameCourier;
-    private EditText edtAdressCourier;
-    private EditText edtPhoneNumberCourier;
-    private EditText edtDateCourier;
-    private Button btnCreateDispo;
+    private EditText edtFirstNameCourse;
+    private EditText edtLastNameCourse;
+    private EditText edtAdressCourse;
+    private EditText edtPhoneNumberCourse;
+    private EditText edtDateCourse;
+    private EditText edtPriceCourse;
+    private Button btnCreateNewCourse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ajouter_disponibilte);
+        setContentView(R.layout.activity_ajouter_course);
         liaison();
     }
 
     private void liaison() {
-        edtFirstNameCourier = findViewById(R.id.edtFirstNameCourier);
-        edtLastNameCourier = findViewById(R.id.edtLastNameCourier);
-        edtAdressCourier = findViewById(R.id.edtAdressCourier);
-        edtPhoneNumberCourier = findViewById(R.id.edtPhoneNumberCourier);
-        edtDateCourier = findViewById(R.id.edtDateCourier);
-        btnCreateDispo = findViewById(R.id.btnCreateDispo);
+        edtFirstNameCourse = findViewById(R.id.edtFirstNameCourse);
+        edtLastNameCourse = findViewById(R.id.edtLastNameCourse);
+        edtAdressCourse = findViewById(R.id.edtAdressCourse);
+        edtPhoneNumberCourse = findViewById(R.id.edtPhoneNumberCourse);
+        edtDateCourse = findViewById(R.id.edtDateCourse);
+        edtPriceCourse = findViewById(R.id.edtPriceCourse);
+        btnCreateNewCourse = findViewById(R.id.btnCreateNewCourse);
 
-        btnCreateDispo.setOnClickListener(new View.OnClickListener() {
+        btnCreateNewCourse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String firstName = edtFirstNameCourier.getText().toString();
-                String lastName = edtLastNameCourier.getText().toString();
-                String adress = edtAdressCourier.getText().toString();
-                String phoneNumber = edtPhoneNumberCourier.getText().toString();
-                String dateCourse = edtDateCourier.getText().toString();
+                String firstName = edtFirstNameCourse.getText().toString();
+                String lastName = edtLastNameCourse.getText().toString();
+                String adress = edtAdressCourse.getText().toString();
+                String phoneNumber = edtPhoneNumberCourse.getText().toString();
+                String dateCourse = edtDateCourse.getText().toString();
+                double price = Double.parseDouble(edtPriceCourse.getText().toString());
                 boolean firstNameIsValid =
                         Utils.checkRegexFirstName(firstName);
                 boolean lastNameIsValid =
@@ -61,82 +65,89 @@ public class AjouterDisponibilteActivity extends AppCompatActivity {
                         Utils.checkRegexDateHeure(dateCourse);
                 boolean isSaveInfo = true;
                 if (firstName.isEmpty()) {
-                    Toast.makeText(AjouterDisponibilteActivity.this,
+                    Toast.makeText(AjouterCourseActivity.this,
                             R.string.firstName_empty, Toast.LENGTH_SHORT).show();
                     isSaveInfo = false;
                 } else if (lastName.isEmpty()) {
-                    Toast.makeText(AjouterDisponibilteActivity.this,
+                    Toast.makeText(AjouterCourseActivity.this,
                             R.string.lastName_empty, Toast.LENGTH_SHORT).show();
                     isSaveInfo = false;
                 } else if (adress.isEmpty()) {
-                    Toast.makeText(AjouterDisponibilteActivity.this,
+                    Toast.makeText(AjouterCourseActivity.this,
                             R.string.adress_vide, Toast.LENGTH_SHORT).show();
                     isSaveInfo = false;
                 } else if (phoneNumber.isEmpty()) {
-                    Toast.makeText(AjouterDisponibilteActivity.this,
+                    Toast.makeText(AjouterCourseActivity.this,
                             R.string.phone_vide, Toast.LENGTH_SHORT).show();
                     isSaveInfo = false;
                 } else if (dateCourse.isEmpty()) {
-                    Toast.makeText(AjouterDisponibilteActivity.this,
+                    Toast.makeText(AjouterCourseActivity.this,
                             R.string.dateBorn_empty, Toast.LENGTH_SHORT).show();
                     isSaveInfo = false;
                 } else if (!firstNameIsValid) {
-                    Toast.makeText(AjouterDisponibilteActivity.this,
+                    Toast.makeText(AjouterCourseActivity.this,
                             R.string.firstName_not_valid, Toast.LENGTH_SHORT).show();
                     isSaveInfo = false;
                 } else if (!lastNameIsValid) {
-                    Toast.makeText(AjouterDisponibilteActivity.this,
+                    Toast.makeText(AjouterCourseActivity.this,
                             R.string.lastName_not_valid, Toast.LENGTH_SHORT).show();
                     isSaveInfo = false;
                 } else if (!adressIsValid) {
-                    Toast.makeText(AjouterDisponibilteActivity.this,
+                    Toast.makeText(AjouterCourseActivity.this,
                             R.string.adress_nom_valide, Toast.LENGTH_SHORT).show();
                     isSaveInfo = false;
                 } else if (!phoneIsValid) {
-                    Toast.makeText(AjouterDisponibilteActivity.this,
+                    Toast.makeText(AjouterCourseActivity.this,
                             R.string.phone_nom_valide, Toast.LENGTH_SHORT).show();
                     isSaveInfo = false;
                 } else if (!dateIsValid) {
-                    Toast.makeText(AjouterDisponibilteActivity.this,
+                    Toast.makeText(AjouterCourseActivity.this,
                             R.string.dateBorn_not_valid, Toast.LENGTH_SHORT).show();
                     isSaveInfo = false;
+                }else if (price < 0 ){
+                    Toast.makeText(AjouterCourseActivity.this,
+                            "Le montant doit etre supérieur a 0", Toast.LENGTH_SHORT).show();
+                }
+                else if (price == 0 ){
+                    Toast.makeText(AjouterCourseActivity.this,
+                            "Le montant doit etre supérieur a 0", Toast.LENGTH_SHORT).show();
                 }
                 if (isSaveInfo) {
-                    saveDisponibilite(firstName, lastName, adress, phoneNumber, dateCourse );
+                    saveCourse(firstName, lastName, adress, phoneNumber, dateCourse,price );
                 }
             }
         });
     }
 
-    private void saveDisponibilite(String firstName, String lastName, String adress, String phoneNumber, String dateCourse) {
+    private void saveCourse(String firstName, String lastName, String adress, String phoneNumber, String dateCourse, double price) {
         Retrofit retrofit = new Retrofit.Builder().baseUrl("http://10.0.2.2:8080/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
         RetrofitApi retrofitApi = retrofit.create(RetrofitApi.class);
-        Courier courier = new Courier(firstName, lastName, adress, phoneNumber, dateCourse);
-        Call<Void> call = retrofitApi.createCourier(courier);
+        Client client = new Client(firstName, lastName, adress, phoneNumber, dateCourse, price);
+        Call<Void> call = retrofitApi.createClient(client);
         call.enqueue((new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(AjouterDisponibilteActivity.this, "disponibilité added to API", Toast.LENGTH_SHORT).show();
-                    edtFirstNameCourier.setText("");
-                    edtLastNameCourier.setText("");
-                    edtAdressCourier.setText("");
-                    edtPhoneNumberCourier.setText("");
-                    edtDateCourier.setText("");
+                    Toast.makeText(AjouterCourseActivity.this, "disponibilité added to API", Toast.LENGTH_SHORT).show();
+                    edtFirstNameCourse.setText("");
+                    edtLastNameCourse.setText("");
+                    edtAdressCourse.setText("");
+                    edtPhoneNumberCourse.setText("");
+                    edtDateCourse.setText("");
+                    edtPriceCourse.setText("");
                 }else{
-                    Toast.makeText(AjouterDisponibilteActivity.this, response.message(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AjouterCourseActivity.this, response.message(), Toast.LENGTH_SHORT).show();
                 }
 
             }
 
             @Override
             public void onFailure(Call<Void> call, Throwable t) {
-                Toast.makeText(AjouterDisponibilteActivity.this, "Data fail to API" + t, Toast.LENGTH_SHORT).show();
+                Toast.makeText(AjouterCourseActivity.this, "Data fail to API" + t, Toast.LENGTH_SHORT).show();
 
             }
         }));
-
     }
 }

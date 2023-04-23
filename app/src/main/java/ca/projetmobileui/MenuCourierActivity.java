@@ -19,13 +19,21 @@ public class MenuCourierActivity extends AppCompatActivity {
     }
 
     private void liaison() {
-        btnChoisirCourse = findViewById(R.id.btnClientAccount);
-        btnDisponiblité = findViewById(R.id.btnDisponibilite);
+        btnChoisirCourse = findViewById(R.id.btnChoisirCourse);
+        btnDisponiblité = findViewById(R.id.btnCreateDisponibilite);
 
         btnDisponiblité.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MenuCourierActivity.this, AjouterDisponibilteActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnChoisirCourse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuCourierActivity.this, ListeDesDisponibiliteActivity.class);
                 startActivity(intent);
             }
         });

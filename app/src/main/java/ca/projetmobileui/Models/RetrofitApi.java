@@ -25,4 +25,10 @@ public interface RetrofitApi {
     @GET("/api/Courier")
     Call<List<Courier>> getCouriers();
 
+    @POST("/api/Client")
+    Call<Void> createClient(@Body Client client);
+    @Retry
+    @GET("/api/Client")
+    Call<List<Client>> getClients();
+
 }

@@ -5,7 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#302E2E"
-    tools:context=".ConnectionActivity">
+    tools:context=".AcceuilActivity">
+
+
 
     <ImageView
         android:id="@+id/imageView"
@@ -17,30 +19,22 @@
         android:layout_marginBottom="450dp"
         app:srcCompat="@drawable/resize" />
 
-    <EditText
-        android:id="@+id/btnCourierMenu"
-        android:layout_width="169dp"
+    <Button
+        android:id="@+id/btnAcceuilConnection"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="130dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginBottom="200dp"
-        android:hint="email" />
-
-    <EditText
-        android:id="@+id/edtPasswordConnection"
-        android:layout_width="171dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="130dp"
+        android:layout_marginStart="150dp"
         android:layout_marginTop="400dp"
         android:layout_marginBottom="100dp"
-        android:hint="password" />
+        android:text="connexion" />
 
     <Button
-        android:id="@+id/btnConnection"
+        android:id="@+id/btnCreateAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="130dp"
         android:layout_marginTop="500dp"
-        android:text="connection" />
+        android:text="create account" />
+
 
 </RelativeLayout>

@@ -2,6 +2,7 @@ package ca.projetmobileui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -27,6 +28,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     private EditText edtPassword;
     private EditText edtConfirmPassword;
     private Button btnCreateUser;
+    private Button btnBackCreateAccount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +44,8 @@ public class CreateAccountActivity extends AppCompatActivity {
         edtDateBorn = findViewById(R.id.edtDateBorn);
         edtPassword = findViewById(R.id.edtPassword);
         edtConfirmPassword = findViewById(R.id.edtConfirmPassword);
-        btnCreateUser = findViewById(R.id.btnCreateUser);
+        btnCreateUser = findViewById(R.id.btnCreateAccount);
+        btnBackCreateAccount = findViewById(R.id.btnBackCreateAccount);
 
         btnCreateUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,8 +113,16 @@ public class CreateAccountActivity extends AppCompatActivity {
                    isSaveInfo = false;
                 }
                 if (isSaveInfo) {
-                    saveUser(firstName, lastName, dateBorn,email, password);
+                    saveUser(firstName, lastName, dateBorn, email, password);
                 }
+            }
+        });
+
+        btnBackCreateAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(CreateAccountActivity.this, AcceuilActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -128,14 +139,19 @@ public class CreateAccountActivity extends AppCompatActivity {
         call.enqueue((new Callback<Void>() {
             @Override
             public void onResponse(Call<Void> call, Response<Void> response) {
-                Toast.makeText(CreateAccountActivity.this, "User added to API", Toast.LENGTH_SHORT).show();
-                System.out.println(response.raw());
-                edtFirstName.setText("");
-                edtLastName.setText("");
-                edtEmail.setText("");
-                edtDateBorn.setText("");
-                edtPassword.setText("");
-                edtConfirmPassword.setText("");
+                if(response.isSuccessful()){
+                    Toast.makeText(CreateAccountActivity.this, "User added to API", Toast.LENGTH_SHORT).show();
+                    System.out.println(response.raw());
+                    edtFirstName.setText("");
+                    edtLastName.setText("");
+                    edtEmail.setText("");
+                    edtDateBorn.setText("");
+                    edtPassword.setText("");
+                    edtConfirmPassword.setText("");
+                }else {
+                    Toast.makeText(CreateAccountActivity.this, response.message(), Toast.LENGTH_SHORT).show();
+                }
+
             }
 
             @Override

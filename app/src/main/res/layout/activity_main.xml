@@ -18,29 +18,21 @@
         app:srcCompat="@drawable/resize" />
 
     <Button
-        android:id="@+id/btnCourierAccount"
+        android:id="@+id/btnCourierMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="130dp"
-        android:layout_marginTop="300dp"
-        android:layout_marginBottom="200dp"
-        android:text="UberDog account" />
+        android:layout_marginStart="125dp"
+        android:layout_marginTop="500dp"
+        android:layout_marginBottom="100dp"
+        android:text="Courier menu" />
 
     <Button
-        android:id="@+id/btnClientAccount"
+        android:id="@+id/btnClientMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="130dp"
         android:layout_marginTop="400dp"
         android:layout_marginBottom="100dp"
-        android:text="client account" />
-
-    <Button
-        android:id="@+id/btnDisponibilite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="130dp"
-        android:layout_marginTop="500dp"
-        android:text="create account" />
+        android:text="Client Menu" />
 
 </RelativeLayout>

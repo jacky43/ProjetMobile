@@ -33,7 +33,7 @@ public class ConnectionActivity extends AppCompatActivity {
 
     private void liaison() {
 
-        edtEmailConnect = findViewById(R.id.btnCourierAccount);
+        edtEmailConnect = findViewById(R.id.btnCourierMenu);
         edtPasswordConnection = findViewById(R.id.edtPasswordConnection);
         btnConnection = findViewById(R.id.btnConnection);
 
@@ -60,10 +60,12 @@ public class ConnectionActivity extends AppCompatActivity {
                     return;
                 }
                 List<User> users = response.body();
-                for(int i=0; i<users.size(); i++) {
+                for(int i=0; i < users.size(); i++) {
                     if(users.get(i).getEmail().equals(email) && users.get(i).getPassword().equals(password)){
-                        Intent intent = new Intent(ConnectionActivity.this, MenuCourierActivity.class);
+                        Intent intent = new Intent(ConnectionActivity.this, MainActivity.class);
                         startActivity(intent);
+                    }else{
+                        Toast.makeText(ConnectionActivity.this, "email ou mot de passe incorrect", Toast.LENGTH_SHORT).show();
                     }
                 }
               

@@ -9,9 +9,9 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button btnCreateAccount;
-    private Button btnConnectClient;
-    private Button btnConnectCourier;
+    private Button btnClientMenu;
+    private Button btnCourierMenu;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,11 +19,10 @@ public class MainActivity extends AppCompatActivity {
         liaison();
     }
     private void liaison() {
-        btnCreateAccount = findViewById(R.id.btnDisponibilite);
-        btnConnectClient = findViewById(R.id.btnClientAccount);
-        btnConnectCourier = findViewById(R.id.btnCourierAccount);
+        btnClientMenu = findViewById(R.id.btnClientMenu);
+        btnCourierMenu = findViewById(R.id.btnCourierMenu);
 
-        btnCreateAccount.setOnClickListener(new View.OnClickListener() {
+        btnClientMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, CreateAccountActivity.class);
@@ -31,10 +30,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        btnConnectCourier.setOnClickListener(new View.OnClickListener() {
+        btnCourierMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, ConnectionActivity.class);
+                Intent intent = new Intent(MainActivity.this, MenuCourierActivity.class);
                 startActivity(intent);
             }
         });
