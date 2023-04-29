@@ -24,6 +24,7 @@ public class ConnectionActivity extends AppCompatActivity {
     private EditText edtEmailConnect;
     private EditText edtPasswordConnection;
     private Button btnConnection;
+    private Button btnBackAcceuil;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +37,7 @@ public class ConnectionActivity extends AppCompatActivity {
         edtEmailConnect = findViewById(R.id.btnCourierMenu);
         edtPasswordConnection = findViewById(R.id.edtPasswordConnection);
         btnConnection = findViewById(R.id.btnConnection);
+        btnBackAcceuil = findViewById(R.id.btnBackAcceuil);
 
         btnConnection.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,13 +62,17 @@ public class ConnectionActivity extends AppCompatActivity {
                     return;
                 }
                 List<User> users = response.body();
+                boolean isFind = false;
                 for(int i=0; i < users.size(); i++) {
                     if(users.get(i).getEmail().equals(email) && users.get(i).getPassword().equals(password)){
-                        Intent intent = new Intent(ConnectionActivity.this, MainActivity.class);
-                        startActivity(intent);
-                    }else{
-                        Toast.makeText(ConnectionActivity.this, "email ou mot de passe incorrect", Toast.LENGTH_SHORT).show();
+                        isFind = true;
                     }
+                }
+                if(isFind){
+                    Intent intent = new Intent(ConnectionActivity.this, MainActivity.class);
+                    startActivity(intent);
+                }else{
+                    Toast.makeText(ConnectionActivity.this, "email ou mot de passe incorrect", Toast.LENGTH_SHORT).show();
                 }
               
             }
@@ -74,6 +80,14 @@ public class ConnectionActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<List<User>> call, Throwable t) {
                 Toast.makeText(ConnectionActivity.this, "email ou mot de passe incorrect" + t, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        btnBackAcceuil.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ConnectionActivity.this, AcceuilActivity.class);
+                startActivity(intent);
             }
         });
     }

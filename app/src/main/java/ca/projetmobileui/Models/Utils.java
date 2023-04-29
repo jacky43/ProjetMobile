@@ -30,8 +30,9 @@ public class Utils {
             return true;
         }
     }
+
     public static boolean checkRegexDateHeure(String pays) {
-        if (!pays.matches("[0-9]{4}[-][0-9]{2}[-][0-9]{2}[ ][0-9]{2}[0-9]{2}+")) {
+        if (!pays.matches("[0-9]{4}[-][0-9]{2}[-][0-9]{2}[ ][0-9]{2}[:][0-9]{2}+")) {
             return false;
         } else {
             return true;
@@ -46,7 +47,7 @@ public class Utils {
         }
     }
     public static boolean checkRegexAdress(String nom) {
-        if (!nom.matches("[a-z-A-Z-]{1,50}+")) {
+        if (!nom.matches("[a-z-A-Z-\\d ]{1,50}+")) {
             return false;
         } else {
             return true;

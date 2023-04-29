@@ -14,59 +14,62 @@ import java.util.List;
 import ca.projetmobileui.Models.Client;
 import ca.projetmobileui.Models.Courier;
 
-public class CustomRecyclerViewAdapter extends RecyclerView.Adapter<NewViewHolder> {
-    private final List<Courier> couriers;
+public class CustomRecyclerViewAdapterClient extends RecyclerView.Adapter<NewViewHolderClient> {
+    private final List<Client> clients;
     private final Context context;
     private final LayoutInflater mLayoutInflater;
 
-    public CustomRecyclerViewAdapter(List<Courier> couriers, Context context) {
-        this.couriers = couriers;
+    public CustomRecyclerViewAdapterClient(List<Client> clients, Context context) {
+        this.clients = clients;
         this.context = context;
         this.mLayoutInflater = LayoutInflater.from(context);
     }
 
     @NonNull
     @Override
-    public NewViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public NewViewHolderClient onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
         View recyclerViewItem =
                 mLayoutInflater.inflate(R.layout.recyclerview_item_layout, parent,
                         false);
-        return new NewViewHolder(recyclerViewItem);
+        return new NewViewHolderClient(recyclerViewItem);
+
     }
 
     @Override
-    public void onBindViewHolder(@NonNull NewViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull NewViewHolderClient holder, int position) {
 
-        Courier courier = this.couriers.get(position);
-        String lastName = courier.getLastName();
-        holder.txtNewDescription.setText(lastName);
-        holder.txtNewTitle.setText(courier.getFirstName());
+        Client client = this.clients.get(position);
+        String lastName = client.getLastName();
+        holder.txtLastNameClient.setText(lastName);
+        holder.txtFirstNameClient.setText(client.getFirstName());
 
         holder.btnArticle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(context, detailsInfoCourierActivity.class);
+                Intent intent = new Intent(context, DetailsInfoClientActivity.class);
 
-                String firstName = courier.getFirstName();
+                String firstName = client.getFirstName();
                 intent.putExtra("firstName", firstName);
-                String lastName = courier.getLastName();
+                String lastName = client.getLastName();
                 intent.putExtra("lastName", lastName);
-                String adress = courier.getAdress();
+                String adress = client.getAdress();
                 intent.putExtra("adress", adress);
-                String phoneNumber = courier.getPhoneNumber();
+                String phoneNumber = client.getPhoneNumber();
                 intent.putExtra("phoneNumber", phoneNumber);
-                String dateCourse = courier.getDateCourse();
+                String dateCourse = client.getDateCourse();
                 intent.putExtra("dateCourse", dateCourse);
+                double price = client.getPrice();
+                intent.putExtra("price", price);
                 context.startActivity(intent);
 
             }
         });
-
     }
+
 
     @Override
     public int getItemCount() {
-        return this.couriers.size();
+        return this.clients.size();
     }
 }

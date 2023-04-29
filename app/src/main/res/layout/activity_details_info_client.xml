@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#302E2E"
-    tools:context=".detailsInfoCourierActivity">
+    tools:context=".DetailsInfoClientActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -23,17 +23,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="150dp"
-
-        android:text="first name :"
-        android:textColor="#2196F3" />
+        android:textColor="#2196F3"
+        android:text="first name :" />
 
     <TextView
-        android:id="@+id/txtFirstNameCourier"
+        android:id="@+id/txtFirstNameClient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
         android:layout_marginTop="150dp"
-        android:textColor="#2196F3" />
+        android:textColor="#2196F3"
+        />
 
     <TextView
         android:id="@+id/textView9"
@@ -45,12 +45,13 @@
         android:text="last name :" />
 
     <TextView
-        android:id="@+id/txtLastNameCourier"
+        android:id="@+id/txtLastNameClient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
         android:layout_marginTop="200dp"
-        android:textColor="#2196F3" />
+        android:textColor="#2196F3"
+        />
 
     <TextView
         android:id="@+id/textView10"
@@ -58,16 +59,17 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="250dp"
-        android:text="adress :"
-        android:textColor="#2196F3" />
+        android:textColor="#2196F3"
+        android:text="adress :" />
 
     <TextView
-        android:id="@+id/txtAdressCourier"
+        android:id="@+id/txtAdressClient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
         android:layout_marginTop="250dp"
-        android:textColor="#2196F3" />
+        android:textColor="#2196F3"
+        />
 
     <TextView
         android:id="@+id/textView11"
@@ -75,32 +77,51 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="300dp"
-        android:text="number phone :"
-        android:textColor="#2196F3" />
+        android:textColor="#2196F3"
+        android:text="number phone :" />
 
     <TextView
-        android:id="@+id/txtPhoneCourier"
+        android:id="@+id/txtPhoneClient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
         android:layout_marginTop="300dp"
-        android:textColor="#2196F3" />
+        android:textColor="#2196F3"
+        />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
         android:layout_marginTop="350dp"
-        android:text="date and time :"
-        android:textColor="#2196F3" />
+        android:textColor="#2196F3"
+        android:text="date and time :" />
 
     <TextView
-        android:id="@+id/txtDateHeureCourier"
+        android:id="@+id/txtDateHeureClient"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="150dp"
         android:layout_marginTop="350dp"
-        android:textColor="#2196F3" />
+        android:textColor="#2196F3"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="400dp"
+        android:textColor="#2196F3"
+        android:text="price :" />
+
+    <TextView
+        android:id="@+id/txtPriceClient"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="400dp"
+        android:textColor="#2196F3"
+        />
 
     <Button
         android:id="@+id/btnUpdate"
@@ -113,7 +134,7 @@
 
 
     <Button
-        android:id="@+id/btnBackListCourse"
+        android:id="@+id/btnBackListDispo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="180dp"

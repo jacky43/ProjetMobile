@@ -11,6 +11,7 @@ public class MenuCourierActivity extends AppCompatActivity {
 
     private Button btnChoisirCourse;
     private Button btnDisponiblité;
+    private Button btnBackMAin;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,6 +22,7 @@ public class MenuCourierActivity extends AppCompatActivity {
     private void liaison() {
         btnChoisirCourse = findViewById(R.id.btnChoisirCourse);
         btnDisponiblité = findViewById(R.id.btnCreateDisponibilite);
+        btnBackMAin = findViewById(R.id.btnBackMAin);
 
         btnDisponiblité.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,7 +35,14 @@ public class MenuCourierActivity extends AppCompatActivity {
         btnChoisirCourse.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MenuCourierActivity.this, ListeDesDisponibiliteActivity.class);
+                Intent intent = new Intent(MenuCourierActivity.this, ListeDesCoursesActivity.class);
+                startActivity(intent);
+            }
+        });
+        btnBackMAin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MenuCourierActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });

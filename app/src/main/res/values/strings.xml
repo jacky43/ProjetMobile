@@ -26,4 +26,6 @@
     <string name="adress_nom_valide">adress est non valide.</string>
     <string name="phone">Ajouter votre numéro téléphone.</string>
     <string name="phone_nom_valide">numéro de téléphone est non valide.</string>
+    <string name="dateInfo_empty">date is empty.</string>
+    <string name="dateInfo_not_valid">date is not valid AAAA-Mo-Jr 00:00.</string>
 </resources>

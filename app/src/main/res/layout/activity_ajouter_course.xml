@@ -94,9 +94,17 @@
         android:id="@+id/btnCreateNewCourse"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="110dp"
+        android:layout_marginStart="120dp"
         android:layout_marginTop="500dp"
         android:text="ajouter course" />
+
+    <Button
+        android:id="@+id/btnBackMenuCourse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="550dp"
+        android:text="Back" />
 
 
 </RelativeLayout>

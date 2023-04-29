@@ -16,6 +16,12 @@
         android:theme="@style/Theme.ProjetMobileUI"
         tools:targetApi="tiramisu">
         <activity
+            android:name=".DetailsInfoClientActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ListeDesCoursesActivity"
+            android:exported="false" />
+        <activity
             android:name=".AjouterCourseActivity"
             android:exported="false" />
         <activity

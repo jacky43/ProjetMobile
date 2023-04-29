@@ -2,6 +2,7 @@ package ca.projetmobileui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +28,7 @@ public class AjouterCourseActivity extends AppCompatActivity {
     private EditText edtDateCourse;
     private EditText edtPriceCourse;
     private Button btnCreateNewCourse;
+    private Button btnBackMenuCourse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +45,7 @@ public class AjouterCourseActivity extends AppCompatActivity {
         edtDateCourse = findViewById(R.id.edtDateCourse);
         edtPriceCourse = findViewById(R.id.edtPriceCourse);
         btnCreateNewCourse = findViewById(R.id.btnCreateNewCourse);
+        btnBackMenuCourse = findViewById(R.id.btnBackMenuCourse);
 
         btnCreateNewCourse.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +85,7 @@ public class AjouterCourseActivity extends AppCompatActivity {
                     isSaveInfo = false;
                 } else if (dateCourse.isEmpty()) {
                     Toast.makeText(AjouterCourseActivity.this,
-                            R.string.dateBorn_empty, Toast.LENGTH_SHORT).show();
+                            R.string.dateInfo_empty, Toast.LENGTH_SHORT).show();
                     isSaveInfo = false;
                 } else if (!firstNameIsValid) {
                     Toast.makeText(AjouterCourseActivity.this,
@@ -102,7 +105,7 @@ public class AjouterCourseActivity extends AppCompatActivity {
                     isSaveInfo = false;
                 } else if (!dateIsValid) {
                     Toast.makeText(AjouterCourseActivity.this,
-                            R.string.dateBorn_not_valid, Toast.LENGTH_SHORT).show();
+                            R.string.dateInfo_not_valid, Toast.LENGTH_SHORT).show();
                     isSaveInfo = false;
                 }else if (price < 0 ){
                     Toast.makeText(AjouterCourseActivity.this,
@@ -115,6 +118,14 @@ public class AjouterCourseActivity extends AppCompatActivity {
                 if (isSaveInfo) {
                     saveCourse(firstName, lastName, adress, phoneNumber, dateCourse,price );
                 }
+            }
+        });
+
+        btnBackMenuCourse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AjouterCourseActivity.this, MenuClientActivity.class);
+                startActivity(intent);
             }
         });
     }

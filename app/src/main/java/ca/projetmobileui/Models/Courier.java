@@ -8,12 +8,12 @@ public class Courier {
     private String phoneNumber;
     private String dateCourse;
 
-    public Courier(String firstName, String lastName, String adress, String phoneNumber, String dateHeure) {
+    public Courier(String firstName, String lastName, String adress, String phoneNumber, String dateCourse) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.adress = adress;
         this.phoneNumber = phoneNumber;
-        this.dateCourse = dateHeure;
+        this.dateCourse = dateCourse;
     }
 
     public String getFirstName() {
@@ -48,7 +48,7 @@ public class Courier {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getDateHeure() {
+    public String getDateCourse() {
         return dateCourse;
     }
 

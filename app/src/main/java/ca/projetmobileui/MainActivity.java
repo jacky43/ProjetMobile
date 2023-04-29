@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         btnClientMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this, CreateAccountActivity.class);
+                Intent intent = new Intent(MainActivity.this, MenuClientActivity.class);
                 startActivity(intent);
             }
         });

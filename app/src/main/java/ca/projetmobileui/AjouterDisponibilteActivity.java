@@ -2,6 +2,7 @@ package ca.projetmobileui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +26,7 @@ public class AjouterDisponibilteActivity extends AppCompatActivity {
     private EditText edtPhoneNumberCourier;
     private EditText edtDateCourier;
     private Button btnCreateDispo;
+    private Button btnBackMenuDispo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +42,7 @@ public class AjouterDisponibilteActivity extends AppCompatActivity {
         edtPhoneNumberCourier = findViewById(R.id.edtPhoneNumberCourier);
         edtDateCourier = findViewById(R.id.edtDateCourier);
         btnCreateDispo = findViewById(R.id.btnCreateDispo);
+        btnBackMenuDispo = findViewById(R.id.btnBackMenuDispo);
 
         btnCreateDispo.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,7 +81,7 @@ public class AjouterDisponibilteActivity extends AppCompatActivity {
                     isSaveInfo = false;
                 } else if (dateCourse.isEmpty()) {
                     Toast.makeText(AjouterDisponibilteActivity.this,
-                            R.string.dateBorn_empty, Toast.LENGTH_SHORT).show();
+                            R.string.dateInfo_empty, Toast.LENGTH_SHORT).show();
                     isSaveInfo = false;
                 } else if (!firstNameIsValid) {
                     Toast.makeText(AjouterDisponibilteActivity.this,
@@ -98,12 +101,20 @@ public class AjouterDisponibilteActivity extends AppCompatActivity {
                     isSaveInfo = false;
                 } else if (!dateIsValid) {
                     Toast.makeText(AjouterDisponibilteActivity.this,
-                            R.string.dateBorn_not_valid, Toast.LENGTH_SHORT).show();
+                            R.string.dateInfo_not_valid, Toast.LENGTH_SHORT).show();
                     isSaveInfo = false;
                 }
                 if (isSaveInfo) {
                     saveDisponibilite(firstName, lastName, adress, phoneNumber, dateCourse );
                 }
+            }
+        });
+
+        btnBackMenuDispo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AjouterDisponibilteActivity.this, MenuCourierActivity.class);
+                startActivity(intent);
             }
         });
     }

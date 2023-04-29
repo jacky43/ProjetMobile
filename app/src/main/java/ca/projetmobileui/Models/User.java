@@ -5,14 +5,14 @@ public class User {
     private String lastName;
     private String bornDate;
     private String email;
-    private String password;
+    private String passWord;
 
     public User(String firstName, String lastName, String dateBorn, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.bornDate = dateBorn;
         this.email = email;
-        this.password = password;
+        this.passWord = password;
     }
 
     public String getFirstName() {
@@ -48,10 +48,10 @@ public class User {
     }
 
     public String getPassword() {
-        return password;
+        return passWord;
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.passWord = password;
     }
 }
